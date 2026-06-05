@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listings</title>
+</head>
+<body>
+
+<h1>Stored Rental Listings</h1>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Price</th>
+</tr>
+
+{% for listing in listings %}
+
+<tr>
+    <td>{{ listing[0] }}</td>
+    <td>{{ listing[1] }}</td>
+    <td>{{ listing[2] }}</td>
+    <td>${{ listing[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">
+    Add Another Listing
+</a>
+
+</body>
+</html>
