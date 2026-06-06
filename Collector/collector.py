@@ -1,3 +1,5 @@
+import json
+import pika
 from faker import Faker
 import random
 
@@ -50,11 +52,35 @@ def collect_rental_data():
 
     conn.commit()
 
+    # Publish RabbitMQ message
+
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters("localhost")
+    )
+
+    channel = connection.channel()
+
+    channel.queue_declare(
+        queue="rental_analysis_queue",
+        durable=True
+    )
+
+    channel.basic_publish(
+        exchange="",
+        routing_key="rental_analysis_queue",
+        body=json.dumps({
+            "event": "new_rental_data"
+        })
+    )
+    print("Message published to rabbit MQ")
+
+    connection.close()
+
     cur.close()
     conn.close()
 
-    print("Listing collected")
+    print("Listing saved to database")
 
 
-for _ in range(10):
+for _ in range(5):
     collect_rental_data()
