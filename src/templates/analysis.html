@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Analysis</title>
+</head>
+<body>
+
+<h1>City Rent Analysis</h1>
+
+<table border="1">
+
+<tr>
+    <th>City</th>
+    <th>Average Rent</th>
+    <th>Highest Rent</th>
+    <th>Lowest Rent</th>
+    <th>Listings</th>
+</tr>
+
+{% for row in analysis_data %}
+
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>${{ row[1] }}</td>
+    <td>${{ row[2] }}</td>
+    <td>${{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">Dashboard</a>
+<a href="/listings">Listings</a>
+
+</body>
+</html>

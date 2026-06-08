@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Best Rental Deals</title>
+</head>
+<body>
+
+<h1>Best Rental Deals</h1>
+
+<table border="1">
+
+<tr>
+    <th>Address</th>
+    <th>City</th>
+    <th>Actual Rent</th>
+    <th>Expected Rent</th>
+    <th>Savings</th>
+</tr>
+
+{% for deal in deals_data %}
+
+<tr>
+    <td>{{ deal[0] }}</td>
+    <td>{{ deal[1] }}</td>
+    <td>${{ deal[2] }}</td>
+    <td>${{ deal[3] }}</td>
+    <td>${{ deal[4] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">Dashboard</a>
+<a href="/analysis">Analysis</a>
+<a href="/listings">Listings</a>
+
+</body>
+</html>

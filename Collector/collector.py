@@ -82,5 +82,5 @@ def collect_rental_data():
     print("Listing saved to database")
 
 
-for _ in range(5):
-    collect_rental_data()
+#for i in range(4):
+collect_rental_data()
